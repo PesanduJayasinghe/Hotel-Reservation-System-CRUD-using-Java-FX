@@ -22,6 +22,7 @@ public class DashboardController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        stage.setTitle("Customer Info");
         stage.show();
     }
 
@@ -32,8 +33,20 @@ public class DashboardController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        stage.setTitle("Book karapn");
+        stage.setTitle("Room Info");
         stage.show();
     }
+
+    @FXML
+    void btnStaffInfo(ActionEvent event) {
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/staffInfo.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.setTitle("Staff Info");
+        stage.show();
+    }
+
 
 }

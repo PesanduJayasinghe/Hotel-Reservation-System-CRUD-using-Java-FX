@@ -130,7 +130,7 @@ public class StaffInfoController implements Initializable {
                 txtPhone.setText(t1.getPhoneNo());
                 txtRole.setText(t1.getRole());
                 txtEmail.setText(t1.getEmail());
-                txtAge.setText(t1.getSalary());
+                txtSalary.setText(t1.getSalary());
             }
         });
     }
