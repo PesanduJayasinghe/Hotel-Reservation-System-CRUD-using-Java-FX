@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.DTO.CustomerInfoDTO;
+import model.DTO.RoominfoDTO;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -59,22 +60,44 @@ public class CustomerController implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event) {
+        String name=txtName.getText();
+        String custID=txtCustId.getText();
+        String phoneNo=txtPhone.getText();
+        int age= Integer.parseInt(txtAge.getText());
+        String city=txtCity.getText();
 
+        CustomerInfoDTO customerInfoData=new CustomerInfoDTO(custID,name,phoneNo,city,age);
+        customerInfoArray.add(customerInfoData);
     }
 
     @FXML
     void btnClear(ActionEvent event) {
+        txtCustId.clear();
+        txtName.clear();
+        txtAge .clear();
+        txtCity.clear();
+        txtPhone.clear();
 
     }
 
     @FXML
     void btnDelete(ActionEvent event) {
-
+        CustomerInfoDTO selectedItem=custTable.getSelectionModel().getSelectedItem();
+        customerInfoArray.remove(selectedItem);
+        custTable.refresh();
     }
 
     @FXML
     void btnUpdate(ActionEvent event) {
+        CustomerInfoDTO selectedItem=custTable.getSelectionModel().getSelectedItem();
 
+        selectedItem.setId(txtCustId.getText());
+        selectedItem.setName(txtName.getText());
+        selectedItem.setAge(Integer.parseInt(txtAge.getText()));
+        selectedItem.setCity(txtCity.getText());
+        selectedItem.setPhoneNo(txtPhone.getText());
+
+        custTable.refresh();
     }
 
     @Override
@@ -86,5 +109,18 @@ public class CustomerController implements Initializable {
         ColumnPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
 
         custTable.setItems(customerInfoArray);
+
+        custTable.getSelectionModel().selectedItemProperty().addListener((observableValue, customerInfoDTO, t1) -> {
+            if(t1!=null) {
+                txtName.setText(t1.getName());
+                txtAge.setText(String.valueOf(t1.getAge()));
+                txtPhone.setText(t1.getPhoneNo());
+                txtCity.setText(t1.getCity());
+                txtCustId.setText(t1.getId());
+
+            }
+        });
     }
+
+
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom right, #f8f9fa, #e9ecef);" stylesheets="@../Style/customer.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerController">
+<AnchorPane fx:id="custTable" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom right, #f8f9fa, #e9ecef);" stylesheets="@../Style/customer.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerController">
 
     <children>
         <VBox alignment="TOP_CENTER" spacing="15" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
@@ -52,11 +52,10 @@
                     <TableColumn fx:id="ColumnCustId" prefWidth="100" text="Customer ID" />
                     <TableColumn fx:id="ColumnName" prefWidth="200" text="Name" />
                     <TableColumn fx:id="ColumnPhoneNo" prefWidth="150" text="Phone No" />
-                    <TableColumn fx:id="ColumnCity" prefWidth="150" text="City" />
                     <TableColumn fx:id="ColumnAge" prefWidth="100" text="Age" />
+                    <TableColumn fx:id="ColumnCity" prefWidth="150" text="City" />
                 </columns>
             </TableView>
         </VBox>
     </children>
 </AnchorPane>
-
