@@ -2,15 +2,15 @@ package Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.DTO.CustomerInfoDTO;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,16 +25,16 @@ public class CustomerController implements Initializable {
     );
 
     @FXML
-    private javafx.scene.control.TableColumn<?, ?> ColumnAge;
+    private TableColumn<?, ?> ColumnAge;
 
     @FXML
-    private javafx.scene.control.TableColumn<?, ?> ColumnCity;
+    private TableColumn<?, ?> ColumnCity;
 
     @FXML
-    private javafx.scene.control.TableColumn<?, ?> ColumnCustId;
+    private TableColumn<?, ?> ColumnCustId;
 
     @FXML
-    private javafx.scene.control.TableColumn<?, ?> ColumnName;
+    private TableColumn<?, ?> ColumnName;
 
     @FXML
     private TableColumn<?, ?> ColumnPhoneNo;
@@ -43,10 +43,10 @@ public class CustomerController implements Initializable {
     private TableView<CustomerInfoDTO> custTable;
 
     @FXML
-    private TextArea txtAge;
+    private TextField txtAge;
 
     @FXML
-    private TextArea txtCity;
+    private TextField txtCity;
 
     @FXML
     private TextField txtCustId;
@@ -55,7 +55,7 @@ public class CustomerController implements Initializable {
     private TextField txtName;
 
     @FXML
-    private TextArea txtPhone;
+    private TextField txtPhone;
 
     @FXML
     void btnAdd(ActionEvent event) {
@@ -79,6 +79,12 @@ public class CustomerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        ColumnAge.setCellValueFactory(new PropertyValueFactory<>("age"));
+        ColumnCustId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        ColumnCity.setCellValueFactory(new PropertyValueFactory<>("city"));
+        ColumnPhoneNo.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
 
+        custTable.setItems(customerInfoArray);
     }
 }

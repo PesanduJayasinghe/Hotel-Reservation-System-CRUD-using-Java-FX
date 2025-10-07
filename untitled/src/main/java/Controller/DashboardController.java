@@ -13,16 +13,16 @@ import java.io.IOException;
 
 public class DashboardController {
 
-    ObservableList<RoominfoDTO> roominfoArray=FXCollections.observableArrayList(
-        new RoominfoDTO()
-
-    );
-
     Stage stage=new Stage();
 
     @FXML
     void btnCustomerInfo(ActionEvent event) {
-
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/customerInfo.fxml"))));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.show();
     }
 
     @FXML
